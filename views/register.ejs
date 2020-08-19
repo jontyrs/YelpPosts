@@ -1,0 +1,30 @@
+<%- include('partials/header') -%>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 col-sm-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center display-4">SignUp Details</h5>
+                    <h5 class="card-text text-center">Doesn't have an Account! Create on a go.</h5>
+                    <div class="container mt-4">
+                        <form action = '/register' method = 'POST'>
+                            <div class="form-group">
+                                <label for="InputEmail">Enter UserName</label>
+                                <input type="text" class="form-control" name = 'username' id="InputEmail" placeholder="UserName">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputPassword">Enter Password</label>
+                                <input type="password" class="form-control" name = 'password' id="InputPassword" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

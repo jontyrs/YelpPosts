@@ -1,0 +1,65 @@
+<%- include('partials/header'); -%>
+
+<% months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %>
+
+<div class="container mt-3 mb-4">
+    <div class="card mb-2" id = 'post-id-card'>
+        <img class="card-img-top img-fluid img-thumbnail" src="<%= post.image %>" alt="Card image">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h4 class="card-title"><%= post.title %></h4>
+                    <p class="card-text"><%= post.description %></p>
+                    <h5>
+                        <div class="blockquote-footer my-2">Posted by <cite title="Source Title"><%= post.author.username %></cite></div>
+                    </h5>
+                </div>
+                <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
+                    <div class="col-lg-2 col-md-3">
+                        <a href="/posts/<%= post._id %>/edit" class="btn btn-outline-warning my-1 btn-block">Edit Post</a>
+                        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-outline-danger my-1 btn-block">Delete Post</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Posted on - <%= months[post.posted.getMonth()] %> <%= post.posted.getDate() %>, <%= post.posted.getFullYear() %>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card" id = 'post-id-card'>
+        <h5 class="card-header px-5 py-4">
+            <div class="d-flex justify-content-between">
+                All Comments
+                <a href="/posts/<%= post._id %>/comments/new" class="btn btn-outline-success ml-auto">Add Comment to this Post</a> 
+            </div>
+        </h5>
+        <% post.comments.forEach((comment) => { %>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text"><%= comment.text %></p>
+                        <h5>
+                            <div class="blockquote-footer my-2">Posted by <cite title="Source Title"><%= comment.author.username %></cite></div>
+                        </h5>
+                    </div>
+                    <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                        <div class="col-lg-3 col-md-4">
+                            <a href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit" class="btn btn-outline-warning btn-block my-1">Edit Comment</a>
+                            <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-danger my-1 btn-block">Delete Comment</button> 
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <hr class='style-hr'>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

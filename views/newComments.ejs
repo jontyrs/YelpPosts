@@ -1,0 +1,25 @@
+<%- include('partials/header'); -%>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 col-sm-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center display-4">Create Comment</h5>
+                    <h5 class="card-text text-center"><strong>On Post</strong> - "<%= post.title %>"</h5>
+                    <div class="container mt-4">
+                        <form action = '/posts/<%= post._id %>/comments' method = 'POST'>
+                            <div class="form-group">
+                                <label for="PostComment">Enter Comment <span style="color: red;">*</span></label>
+                                <input type="text" name = 'text' class="form-control" id="PostComment" placeholder="Comment">
+                            </div>
+                            <button type="submit" class="btn btn-outline-success">Create Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,5 @@
+black   rgb(0, 0, 0)
+blue    rgb(20, 33, 61)
+orange  rgb(252, 163, 17)
+gray    rgb(229, 229, 229)
+white   rgb(255, 255, 255)

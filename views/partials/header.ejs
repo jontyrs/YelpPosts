@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YelpPosts</title>
+    <link rel="stylesheet" href="/stylesheet/main.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body id='body'>
+
+    <nav class="navbar sticky-top navbar-expand-lg nav-color pt-2">
+        <div class="container">
+            <div class="pr-2 display-1">
+                <a class="navbar-brand" href='/'>
+                    <span class="navbar-brand"><i class="fas fa-camera-retro"></i></span>
+                    <span class="navbar-brand"> <strong> YelpPosts</strong> </span>
+                </a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon" style="border: 2px solid red;"></span> -->
+                <span style="color: blue;"><i class="fas fa-bars"></i></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item link-active px-2">
+                        <a class="nav-link" href="/posts"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item px-2 link-active">
+                        <a class="nav-link" href="/posts/new"><i class="fas fa-plus"></i> Create New Post</a>
+                    </li>
+                    <li class="nav-item px-2 link-active">
+                        <a class="nav-link" href="https://github.com/jontyrs"><i class="fas fa-address-card"></i> Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <% if(!currentUser) { %>
+                        <li class="nav-item px-2 link-active">
+                            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> LogIn</a>
+                        </li>
+                        <li class="nav-item px-2 link-active">
+                            <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> SignUp</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item px-2 nav-link text-uppercase profile-style">
+                            Hi! <span class="ml-1"><%= currentUser.username %></span>
+                        </li>
+                        <li class="nav-item px-2 link-active">
+                            <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>

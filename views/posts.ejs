@@ -1,0 +1,47 @@
+<%- include('partials/header') -%>
+
+<div class="container pt-3">
+    <div class="jumbotron post-jumbotron py-3">
+        <h1 class="display-2 text-center"><i class="fas fa-camera-retro"></i><span class="d-none d-md-inline"><strong>  YelpPosts</strong></span></h1>
+        <hr class="my-3">
+        <div class="row py-2">
+            <div class="col-lg-9">
+                <h3>What is on your mind? Share with the WORLD!!</h3>
+            </div>
+            <div class="col-lg-3 d-flex justify-content-center align-items-start">
+                <a class="btn btn-outline-success btn-lg" href="/posts/new" role="button">Create New Post</a>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<% months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %>
+
+<div class="container">
+    <div class="row">
+        <% postsArr.forEach((posts) => { %>
+            <div class="col-md-6 mb-3">
+                <div class="card mb-3 h-100" id = 'post-id-card'>
+                    <img class="card-img-top img-fluid img-thumbnail" src="<%= posts.image %>" alt="Card image" id='img-style'>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h4 class="card-title"><%= posts.title %></h4>
+                                <h5><div class="blockquote-footer mt-1 mb-2">Posted by <cite title="Source Title"><%= posts.author.username %></cite></div></h5>
+                            </div>
+                            <div class="col-lg-3 d-flex justify-content-center align-items-start">
+                                <a href="/posts/<%= posts._id %>" class="btn btn-outline-primary">View Post</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        Posted on - <%= months[posts.posted.getMonth()] %> <%= posts.posted.getDate() %>, <%= posts.posted.getFullYear() %> 
+                        <!-- <%= posts.posted.toString().substring(1,10) %> -->
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
