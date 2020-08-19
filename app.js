@@ -345,4 +345,4 @@ function hasCommentOwnership(req, res, next) {
 }
 
 // ---------- STARTING APPLICATION ----------
-app.listen(3000);
+app.listen(process.env.PORT);
